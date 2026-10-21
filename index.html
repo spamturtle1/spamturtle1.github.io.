@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,58 +6,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>THE FANZONE</title>
 <style>
-:root {
-  --bg:#080a0f; --panel:#141821; --panel2:#202633;
-  --red:#ed1c24; --text:#f5f6fa; --muted:#a7afbd;
-  --border:#2a3140;
-}
-* {box-sizing:border-box}
-body {margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-header {background:#10131a;border-bottom:3px solid var(--red);padding:16px 5%;position:sticky;top:0;z-index:10}
-.top {display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.logo {font-size:27px;font-weight:900;letter-spacing:1px}
-.logo span {color:var(--red)}
-.search {width:min(100%,320px);padding:12px;background:var(--panel2);color:white;border:1px solid var(--border);border-radius:7px}
-nav,.toolbar {display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-button,select,input {font:inherit}
-button {background:var(--panel2);color:white;border:1px solid var(--border);border-radius:7px;padding:10px 13px;cursor:pointer}
-button:hover,button.active {background:var(--red);border-color:var(--red)}
-main {max-width:1250px;margin:auto;padding:24px 18px 60px}
-.hero {padding:35px 25px;border-radius:12px;background:linear-gradient(110deg,#261015,#151923 70%);border:1px solid #39262c;margin-bottom:25px}
-.hero h1 {font-size:clamp(32px,6vw,54px);margin:0 0 10px}
-.hero p,.muted {color:var(--muted)}
-h2 {margin-top:28px;font-size:23px}
-.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px}
-.card,.panel {background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:17px}
-.game {cursor:pointer}
-.game:hover {border-color:var(--red)}
-.teams {display:flex;flex-direction:column;gap:12px;margin:18px 0}
-.team {display:flex;align-items:center;justify-content:space-between;gap:10px}
-.team-name {font-weight:700;overflow-wrap:anywhere}
-.rank {color:#f1c75b;font-weight:800;margin-right:5px}
-.score {font-size:21px;font-weight:900}
-.status {color:#ff6b72;font-weight:700;font-size:12px;text-transform:uppercase}
-.muted {font-size:13px}
-.hidden {display:none!important}
-select {background:var(--panel2);color:white;border:1px solid var(--border);border-radius:7px;padding:11px}
-.video-frame {width:100%;aspect-ratio:16/9;background:#000;border-radius:9px;overflow:hidden}
-.video-frame iframe {width:100%;height:100%;border:0}
-.video-message {display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--muted);min-height:150px}
-.ranking-list {display:grid;gap:8px;margin:14px 0 24px}
-.ranking-row {display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:12px;padding:13px;background:var(--panel);border:1px solid var(--border);border-radius:8px}
-.ranking-number {color:#f1c75b;font-weight:900}
-.ranking-team {font-weight:700;overflow-wrap:anywhere}
-.ranking-record {color:var(--muted);font-size:13px;text-align:right}
-.error {color:#ff9da2}
-footer {text-align:center;color:var(--muted);border-top:1px solid var(--border);padding:25px}
-@media(max-width:500px) {
-  header {padding:14px}
-  .logo {font-size:23px}
-  main {padding:16px 12px 40px}
-  .hero {padding:25px 17px}
-  .ranking-row {grid-template-columns:40px minmax(0,1fr)}
-  .ranking-record {grid-column:2;text-align:left}
-}
+:root{--bg:#080a0f;--panel:#141821;--panel2:#202633;--red:#ed1c24;--text:#f5f6fa;--muted:#a7afbd;--border:#2a3140}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{background:#10131a;border-bottom:3px solid var(--red);padding:16px 5%;position:sticky;top:0;z-index:10}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{font-size:27px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--red)}
+input,select,button{font:inherit}
+input,select{background:var(--panel2);color:white;border:1px solid var(--border);border-radius:7px;padding:12px}
+.search{width:min(100%,320px)}
+nav,.toolbar,.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+button{background:var(--panel2);color:white;border:1px solid var(--border);border-radius:7px;padding:10px 13px;cursor:pointer}
+button:hover,button.active{background:var(--red);border-color:var(--red)}
+main{max-width:1250px;margin:auto;padding:24px 18px 60px}
+.hero{padding:35px 25px;border-radius:12px;background:linear-gradient(110deg,#261015,#151923 70%);border:1px solid #39262c;margin-bottom:25px}
+.hero h1{font-size:clamp(32px,6vw,54px);margin:0 0 10px}
+h2{margin-top:28px;font-size:23px}
+.muted,.hero p{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px}
+.card,.panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:17px}
+.game{cursor:pointer}.game:hover{border-color:var(--red)}
+.teams{display:flex;flex-direction:column;gap:12px;margin:18px 0}
+.team{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.team-name{font-weight:700;overflow-wrap:anywhere}
+.score{font-size:21px;font-weight:900}
+.rank,.ranking-number{color:#f1c75b;font-weight:900;margin-right:5px}
+.status{color:#ff6b72;font-weight:700;font-size:12px;text-transform:uppercase}
+.hidden{display:none!important}
+.ranking-list{display:grid;gap:8px;margin:14px 0 24px}
+.ranking-row{display:grid;grid-template-columns:45px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px;background:var(--panel);border:1px solid var(--border);border-radius:8px}
+.ranking-team{font-weight:700}.ranking-record{font-size:13px;color:var(--muted)}
+.standings-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:9px;margin-bottom:22px}
+.standings-table{width:100%;min-width:580px;border-collapse:collapse;background:var(--panel)}
+.standings-table th,.standings-table td{padding:11px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
+.standings-table th{background:var(--panel2)}
+.standings-table td.num,.standings-table th.num{text-align:center}
+.standings-group{margin-top:24px}
+.standings-team{font-weight:700}
+.video-frame{width:100%;aspect-ratio:16/9;background:#000;border-radius:9px;overflow:hidden}
+.video-frame iframe{width:100%;height:100%;border:0}
+.video-message{padding:24px;text-align:center;color:var(--muted);background:#10131a;border-radius:8px}
+.error{color:#ff9da2}
+footer{text-align:center;color:var(--muted);border-top:1px solid var(--border);padding:25px}
+.ai-shell{display:flex;flex-direction:column;height:min(68vh,720px);min-height:430px;background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.ai-head{padding:16px;border-bottom:1px solid var(--border);background:#11151d}
+.ai-head h2{margin:0 0 5px}
+.ai-messages{padding:16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;flex:1}
+.ai-message{max-width:90%;padding:12px 14px;border-radius:12px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.ai-message.bot{align-self:flex-start;background:var(--panel2);border:1px solid var(--border)}
+.ai-message.user{align-self:flex-end;background:#65151b;border:1px solid #a51c25}
+.ai-compose{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border);background:#10131a}
+.ai-compose input{flex:1;min-width:0}
+.ai-compose button{background:var(--red);font-weight:700}
+.ai-suggestions{display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 12px;background:#10131a}
+@media(max-width:500px){header{padding:14px}main{padding:16px 12px 40px}.hero{padding:25px 17px}.logo{font-size:23px}.ranking-row{grid-template-columns:35px minmax(0,1fr)}.ranking-record{grid-column:2;text-align:left}.ai-compose{padding:9px}}
 </style>
 </head>
 <body>
@@ -73,7 +75,9 @@ footer {text-align:center;color:var(--muted);border-top:1px solid var(--border);
     <button data-page="nfl">NFL</button>
     <button data-page="basketball">College Basketball</button>
     <button data-page="nba">NBA</button>
+    <button data-page="standings">Standings</button>
     <button data-page="highlights">Highlights</button>
+    <button data-page="fanzoneai">FANZONE AI</button>
   </nav>
 </header>
 
@@ -81,642 +85,345 @@ footer {text-align:center;color:var(--muted);border-top:1px solid var(--border);
   <section id="home" class="page">
     <div class="hero">
       <h1>ALL SPORTS. ONE PLACE.</h1>
-      <p>Scores, schedules, college rankings, and game highlights — all in THE FANZONE.</p>
+      <p>Scores, schedules, rankings, standings, and highlights — all in THE FANZONE.</p>
       <div class="toolbar">
         <button onclick="showPage('college')">College Football</button>
         <button onclick="showPage('nfl')">NFL</button>
         <button onclick="showPage('basketball')">College Basketball</button>
-        <button onclick="showPage('highlights')">Game Highlights</button>
+        <button onclick="showPage('highlights')">Highlights</button>
       </div>
     </div>
-    <h2>College Football</h2>
-    <div id="homeCollege" class="grid"><p class="muted">Loading games...</p></div>
-    <h2>NFL</h2>
-    <div id="homeNFL" class="grid"><p class="muted">Loading games...</p></div>
-    <h2>College Basketball</h2>
-    <div id="homeCBB" class="grid"><p class="muted">Loading games...</p></div>
+    <h2>College Football</h2><div id="homeCollege" class="grid"><p class="muted">Loading...</p></div>
+    <h2>NFL</h2><div id="homeNFL" class="grid"><p class="muted">Loading...</p></div>
+    <h2>College Basketball</h2><div id="homeCBB" class="grid"><p class="muted">Loading...</p></div>
   </section>
 
   <section id="college" class="page hidden">
     <h1>College Football</h1>
-    <p class="muted">Ranked college teams show their actual ranking. Unranked teams have no number.</p>
-    <div class="toolbar">
-      <button onclick="loadSport('cfb','collegeGames')">Refresh</button>
-      <button onclick="filterTeam('BYU','cfb','collegeGames')">BYU Cougars</button>
-    </div>
+    <p class="muted">Scores and scheduled games from the data provider.</p>
+    <div class="toolbar"><button onclick="loadSport('cfb','collegeGames')">Refresh</button><button onclick="filterTeam('BYU','cfb','collegeGames')">BYU Cougars</button></div>
     <div id="collegeGames" class="grid"></div>
   </section>
 
   <section id="nfl" class="page hidden">
     <h1>NFL</h1>
-    <div class="toolbar">
-      <button onclick="filterTeam('Buffalo Bills','nfl','nflGames')">Buffalo Bills</button>
-      <button onclick="loadSport('nfl','nflGames')">Refresh</button>
-    </div>
+    <div class="toolbar"><button onclick="filterTeam('Buffalo','nfl','nflGames')">Buffalo Bills</button><button onclick="loadSport('nfl','nflGames')">Refresh</button></div>
     <div id="nflGames" class="grid"></div>
   </section>
 
   <section id="basketball" class="page hidden">
     <h1>College Basketball</h1>
-    <p class="muted">The AP Top 25 appears when official ranking data is available. Unranked teams have no ranking number.</p>
-    <h2>AP Top 25 Rankings</h2>
-    <div id="collegeBasketballRankings" class="ranking-list">
-      <p class="muted">Loading college basketball rankings...</p>
-    </div>
-    <h2>Games &amp; Scores</h2>
-    <div id="cbbGames" class="grid"></div>
+    <p class="muted">Rankings appear when the data provider publishes them.</p>
+    <h2>AP Top 25 Rankings</h2><div id="collegeBasketballRankings" class="ranking-list"><p class="muted">Loading rankings...</p></div>
+    <h2>Games &amp; Scores</h2><div id="cbbGames" class="grid"></div>
   </section>
 
   <section id="nba" class="page hidden">
-    <h1>NBA</h1>
-    <div id="nbaGames" class="grid"></div>
+    <h1>NBA</h1><div id="nbaGames" class="grid"></div>
+  </section>
+
+  <section id="standings" class="page hidden">
+    <h1>Standings</h1>
+    <p class="muted">League standings provided by ESPN's public data service when available.</p>
+    <div class="tabs">
+      <button class="active" data-standing="nfl">NFL</button>
+      <button data-standing="cfb">College Football</button>
+      <button data-standing="cbb">College Basketball</button>
+      <button data-standing="nba">NBA</button>
+    </div>
+    <div id="standingsContent"><p class="muted">Loading standings...</p></div>
   </section>
 
   <section id="highlights" class="page hidden">
     <h1>Game Highlights</h1>
-    <p class="muted">Watch available, authorized video clips here without leaving THE FANZONE.</p>
+    <p class="muted">Videos are shown only when an embeddable video is available.</p>
     <div class="panel">
       <div class="toolbar">
         <select id="highlightSport">
-          <option value="College Football">College Football</option>
-          <option value="NFL">NFL</option>
-          <option value="College Basketball">College Basketball</option>
-          <option value="NBA">NBA</option>
-          <option value="MLB">MLB Baseball</option>
-          <option value="NHL">NHL Hockey</option>
+          <option value="cfb">College Football</option><option value="nfl">NFL</option>
+          <option value="cbb">College Basketball</option><option value="nba">NBA</option>
         </select>
-        <input id="highlightTeam" class="search" placeholder="Team or matchup">
-        <button onclick="findHighlights()">Show Highlights</button>
+        <input id="highlightTeam" placeholder="Team or matchup">
+        <button onclick="findHighlights()">Find Highlights</button>
       </div>
-      <div id="highlightResults">
-        <div class="video-message">Choose a sport and team to look for available highlights.</div>
-      </div>
+      <div id="highlightResults" class="video-message">Choose a sport and team to look for available highlights.</div>
     </div>
+  </section>
+
+  <section id="fanzoneai" class="page hidden">
+    <h1>FANZONE AI</h1>
+    <p class="muted">Ask about sports rules, teams, scores, schedules, rankings, and standings loaded on this website.</p>
+    <div class="ai-shell">
+      <div class="ai-head"><h2>Ask FANZONE AI</h2><div class="muted">Your built-in sports assistant</div></div>
+      <div id="aiMessages" class="ai-messages" aria-live="polite">
+        <div class="ai-message bot">Hey! I'm FANZONE AI. Ask me about BYU, the Buffalo Bills, football, basketball, scores, rankings, or sports rules. I'll use the sports information loaded on this website when I can.</div>
+      </div>
+      <div class="ai-suggestions">
+        <button onclick="askSuggestion('Show me BYU games')">BYU games</button>
+        <button onclick="askSuggestion('Show me Buffalo Bills games')">Bills games</button>
+        <button onclick="askSuggestion('What is a touchdown worth?')">Football rules</button>
+        <button onclick="askSuggestion('What are the college basketball rankings?')">College rankings</button>
+      </div>
+      <form id="aiForm" class="ai-compose">
+        <input id="aiInput" maxlength="1200" autocomplete="off" placeholder="Ask a sports question..." required>
+        <button id="aiSend" type="submit">Send</button>
+      </form>
+    </div>
+    <p class="muted">This built-in version doesn't have full ChatGPT-style generative AI or live-news access.</p>
   </section>
 
   <section id="details" class="hidden">
     <button onclick="goBack()">← Back to games</button>
     <div id="gameDetails" class="panel" style="margin-top:18px"></div>
-    <div class="panel">
-      <h2>Game Highlights</h2>
-      <div id="gameHighlights">
-        <div class="video-message">No highlight selected.</div>
-      </div>
-    </div>
+    <div class="panel"><h2>Game Highlights</h2><div id="gameHighlights" class="video-message">No highlight selected.</div></div>
   </section>
 </main>
-
-<footer>THE FANZONE · Scores, schedules, and highlights in one place.</footer>
+<footer>THE FANZONE · All your sports in one place.</footer>
 
 <script>
-const API = "https://site.api.espn.com/apis/site/v2/sports";
-
-const SPORTS = {
-  cfb: {
-    label: "College Football",
-    path: "football/college-football",
-    college: true
-  },
-  nfl: {
-    label: "NFL",
-    path: "football/nfl",
-    college: false
-  },
-  cbb: {
-    label: "College Basketball",
-    path: "basketball/mens-college-basketball",
-    college: true
-  },
-  nba: {
-    label: "NBA",
-    path: "basketball/nba",
-    college: false
-  }
+const API="https://site.api.espn.com/apis/site/v2/sports";
+const SPORTS={
+ cfb:{label:"College Football",path:"football/college-football",college:true},
+ nfl:{label:"NFL",path:"football/nfl",college:false},
+ cbb:{label:"College Basketball",path:"basketball/mens-college-basketball",college:true},
+ nba:{label:"NBA",path:"basketball/nba",college:false}
 };
+let allGames={},currentGame=null,previousPage="home",currentStanding="nfl";
+let cbbRanks=new Map();
 
-let allGames = {};
-let collegeBasketballRankMap = new Map();
-let currentGame = null;
-let previousPage = "home";
-
-function esc(value) {
-  return String(value ?? "").replace(/[&<>"']/g, character => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[character]);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+ document.getElementById("details").classList.add("hidden");
+ document.getElementById(id).classList.remove("hidden");
+ document.querySelectorAll("#navigation button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ previousPage=id;window.scrollTo({top:0,behavior:"smooth"});
 }
-
-function normalizedTeamName(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "");
+document.querySelectorAll("#navigation button").forEach(b=>b.addEventListener("click",()=>{
+ showPage(b.dataset.page);
+ if(b.dataset.page==="standings")loadStandings(currentStanding);
+}));
+function dateText(d){
+ if(!d)return "Date unavailable";
+ const date=new Date(d);return isNaN(date)?"Date unavailable":date.toLocaleString([],{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
 }
-
-function showPage(page) {
-  document.querySelectorAll(".page").forEach(element =>
-    element.classList.add("hidden")
-  );
-
-  document.getElementById("details").classList.add("hidden");
-  document.getElementById(page)?.classList.remove("hidden");
-
-  document.querySelectorAll("#navigation button").forEach(button =>
-    button.classList.toggle("active", button.dataset.page === page)
-  );
-
-  previousPage = page;
-  window.scrollTo({top: 0, behavior: "smooth"});
+function teams(event){
+ const c=event.competitions?.[0]?.competitors||[];
+ return {away:c.find(x=>x.homeAway==="away")||c[0],home:c.find(x=>x.homeAway==="home")||c[1]};
 }
+function status(event){
+ const t=event.status?.type;
+ if(t?.completed||t?.name==="STATUS_FINAL")return "Final";
+ if(t?.state==="in")return t.detail||"LIVE";
+ return t?.detail||"Scheduled";
+}
+function rankOf(team,key){
+ if(key==="cbb"){
+  const t=team?.team||team;
+  const r=cbbRanks.get(String(t?.id||""))||cbbRanks.get(String(t?.displayName||t?.name||"").toLowerCase());
+  if(r)return "#"+r;
+ }
+ if(!SPORTS[key]?.college)return "";
+ const n=Number(team?.curatedRank?.current??team?.rank);
+ return n>=1&&n<=25?"#"+n:"";
+}
+function card(event,key){
+ const {away,home}=teams(event);if(!away||!home)return "";
+ const a=away.team?.displayName||"Away team",h=home.team?.displayName||"Home team";
+ const searchable=(SPORTS[key].label+" "+a+" "+h+" "+(event.name||"")).toLowerCase();
+ return `<article class="card game" data-search="${esc(searchable)}" onclick="openGame('${esc(event.id)}','${key}')">
+ <div class="muted">${esc(SPORTS[key].label)}</div><div class="teams">
+ <div class="team"><span class="team-name">${rankOf(away,key)?`<span class="rank">${rankOf(away,key)}</span>`:""}${esc(a)}</span><span class="score">${esc(away.score??"")}</span></div>
+ <div class="team"><span class="team-name">${rankOf(home,key)?`<span class="rank">${rankOf(home,key)}</span>`:""}${esc(h)}</span><span class="score">${esc(home.score??"")}</span></div></div>
+ <div class="status">${esc(status(event))}</div><p class="muted">${esc(dateText(event.date))}</p>
+ <button onclick="event.stopPropagation();showEventHighlights('${esc(event.id)}','${key}')">Highlights</button></article>`;
+}
+async function loadSport(key,targetId){
+ const target=document.getElementById(targetId);if(!target)return;
+ target.innerHTML='<p class="muted">Loading games...</p>';
+ try{
+  const r=await fetch(`${API}/${SPORTS[key].path}/scoreboard?limit=100`);
+  if(!r.ok)throw Error();
+  const d=await r.json();allGames[key]=d.events||[];
+  target.innerHTML=allGames[key].length?allGames[key].map(e=>card(e,key)).join(""):'<p class="muted">No games currently listed.</p>';
+  applySearch();
+ }catch(e){target.innerHTML='<p class="error">Games could not load right now. Try again later.</p>'}
+}
+function filterTeam(team,key,target){
+ showPage(key==="cfb"?"college":"nfl");
+ const matches=(allGames[key]||[]).filter(e=>JSON.stringify(e).toLowerCase().includes(team.toLowerCase()));
+ document.getElementById(target).innerHTML=matches.length?matches.map(e=>card(e,key)).join(""):`<p class="muted">No ${esc(team)} games found in the loaded schedule.</p>`;
+}
+async function loadRanks(){
+ const el=document.getElementById("collegeBasketballRankings");
+ try{
+  const r=await fetch(`${API}/basketball/mens-college-basketball/rankings`);
+  if(!r.ok)throw Error();
+  const d=await r.json(),poll=(d.rankings||[]).find(x=>/ap top 25/i.test(x.name||""))||(d.rankings||[]).find(x=>/ap/i.test(x.name||""));
+  const list=(poll?.ranks||[]).map(x=>({rank:Number(x.current??x.rank),team:x.team||{},record:x.recordSummary||x.record?.summary||""})).filter(x=>x.rank>=1&&x.rank<=25).sort((a,b)=>a.rank-b.rank);
+  if(!list.length){el.innerHTML='<p class="muted">The AP Top 25 is not available from the data provider right now.</p>';return}
+  cbbRanks.clear();
+  list.forEach(x=>{if(x.team.id)cbbRanks.set(String(x.team.id),x.rank);const n=(x.team.displayName||x.team.name||"").toLowerCase();if(n)cbbRanks.set(n,x.rank)});
+  el.innerHTML=list.map(x=>`<div class="ranking-row"><span class="ranking-number">#${x.rank}</span><span class="ranking-team">${esc(x.team.displayName||x.team.name||"Team")}</span><span class="ranking-record">${esc(x.record)}</span></div>`).join("");
+ }catch(e){el.innerHTML='<p class="error">Rankings could not load. Try again later.</p>'}
+}
+function openGame(id,key){
+ const event=(allGames[key]||[]).find(e=>e.id===id);if(!event)return;
+ previousPage=document.querySelector(".page:not(.hidden)")?.id||"home";
+ document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+ document.getElementById("details").classList.remove("hidden");
+ const {away,home}=teams(event);
+ document.getElementById("gameDetails").innerHTML=`<h1>${esc(away.team?.displayName||"Away")} vs ${esc(home.team?.displayName||"Home")}</h1>
+ <div class="teams"><div class="team"><b>${esc(away.team?.displayName||"Away")}</b><span class="score">${esc(away.score??"—")}</span></div>
+ <div class="team"><b>${esc(home.team?.displayName||"Home")}</b><span class="score">${esc(home.score??"—")}</span></div></div>
+ <p class="status">${esc(status(event))}</p><p>${esc(SPORTS[key].label)} · ${esc(dateText(event.date))}</p>`;
+ showEventHighlights(id,key);
+}
+function goBack(){showPage(previousPage||"home")}
+function applySearch(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ document.querySelectorAll(".game").forEach(c=>c.classList.toggle("hidden",!!q&&!((c.dataset.search||"")+" "+c.textContent.toLowerCase()).includes(q)));
+ document.querySelectorAll("[data-row]").forEach(r=>r.classList.toggle("hidden",!!q&&!r.textContent.toLowerCase().includes(q)));
+}
+document.getElementById("search").addEventListener("input",applySearch);
 
-document.querySelectorAll("#navigation button").forEach(button =>
-  button.addEventListener("click", () => showPage(button.dataset.page))
-);
-
-function rankOf(team, key) {
-  // NFL and NBA teams never display college rankings.
-  if (!SPORTS[key]?.college) return "";
-
-  // College basketball uses the AP Top 25 ranking map.
-  if (key === "cbb") {
-    const teamData = team?.team || team;
-    const id = String(teamData?.id || "");
-    const name = normalizedTeamName(
-      teamData?.displayName || teamData?.name || ""
-    );
-
-    const mapped =
-      (id && collegeBasketballRankMap.get("id:" + id)) ||
-      (name && collegeBasketballRankMap.get("name:" + name));
-
-    if (mapped) return "#" + mapped;
+function collectGroups(data){
+ const groups=[],seen=new Set();
+ function visit(node,path){
+  if(!node||typeof node!=="object")return;
+  if(Array.isArray(node)){node.forEach(x=>visit(x,path));return}
+  const entries=node.standings?.entries||node.entries;
+  if(Array.isArray(entries)&&entries.length&&entries.some(x=>x.team)){
+   const key=entries.map(x=>x.team?.id||x.team?.displayName).join(",");
+   if(!seen.has(key)){seen.add(key);groups.push({name:node.name||node.abbreviation||path.join(" · ")||"Standings",entries})}
   }
+  for(const [k,v] of Object.entries(node))if(v&&typeof v==="object"&&!["entries","stats","team","logos"].includes(k))visit(v,v.name?[...path,v.name]:path);
+ }
+ visit(data,[]);return groups;
+}
+function stat(entry,words){
+ return entry.stats?.find(s=>words.some(w=>String(s.name||s.abbreviation||s.displayName||"").toLowerCase().replace(/[^a-z]/g,"").includes(w)))?.displayValue??"—";
+}
+function tableHTML(entries){
+ const rows=entries.map((e,i)=>{
+  const t=e.team||{},rec=e.records?.[0]?.summary||"";
+  return `<tr data-row><td class="num">${i+1}</td><td class="standings-team">${esc(t.displayName||t.name||"Team")}</td><td class="num">${esc(stat(e,["wins"])!=="—"?stat(e,["wins"]):rec.split("-")[0]||"—")}</td><td class="num">${esc(stat(e,["losses"])!=="—"?stat(e,["losses"]):rec.split("-")[1]||"—")}</td><td class="num">${esc(stat(e,["ties"]))}</td><td class="num">${esc(stat(e,["winpercent","pct"]))}</td></tr>`;
+ }).join("");
+ return `<div class="standings-wrap"><table class="standings-table"><thead><tr><th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+async function loadStandings(key=currentStanding){
+ currentStanding=key;
+ document.querySelectorAll("[data-standing]").forEach(b=>b.classList.toggle("active",b.dataset.standing===key));
+ const el=document.getElementById("standingsContent");el.innerHTML='<p class="muted">Loading standings...</p>';
+ try{
+  const r=await fetch(`https://site.api.espn.com/apis/v2/sports/${SPORTS[key].path}/standings`);
+  if(!r.ok)throw Error();
+  const groups=collectGroups(await r.json());
+  el.innerHTML=groups.length?groups.map(g=>`<div class="standings-group"><h2>${esc(g.name)}</h2>${tableHTML(g.entries)}</div>`).join(""):'<p class="muted">Standings are not available right now.</p>';
+  applySearch();
+ }catch(e){el.innerHTML='<p class="error">Standings could not load right now.</p>'}
+}
+document.querySelectorAll("[data-standing]").forEach(b=>b.addEventListener("click",()=>loadStandings(b.dataset.standing)));
 
-  // Use a valid ranking only if the scoreboard supplies one.
-  const raw =
-    team?.curatedRank?.current ??
-    team?.rank ??
-    team?.team?.rank;
-
-  const value = Number(raw);
-
-  return raw != null &&
-    Number.isFinite(value) &&
-    value >= 1 &&
-    value <= 25
-      ? "#" + value
-      : "";
+async function refreshAll(){
+ await Promise.all([
+  loadSport("cfb","homeCollege"),loadSport("nfl","homeNFL"),loadSport("cbb","homeCBB"),
+  loadSport("cfb","collegeGames"),loadSport("nfl","nflGames"),loadSport("cbb","cbbGames"),
+  loadSport("nba","nbaGames"),loadRanks(),loadStandings(currentStanding)
+ ]);
 }
 
-async function loadCollegeBasketballRankings() {
-  const container = document.getElementById("collegeBasketballRankings");
-  if (!container) return;
-
-  try {
-    const response = await fetch(
-      `${API}/basketball/mens-college-basketball/rankings`
-    );
-
-    if (!response.ok) throw new Error("Rankings unavailable");
-
-    const data = await response.json();
-    const rankings = data.rankings || [];
-
-    const poll = rankings.find(ranking =>
-      /ap top 25/i.test(ranking.name || "") ||
-      String(ranking.type || "").toLowerCase() === "ap"
-    ) || rankings.find(ranking =>
-      /ap/i.test(ranking.name || "")
-    );
-
-    const ranks = (poll?.ranks || [])
-      .map(item => ({
-        rank: Number(item.current ?? item.rank),
-        team: item.team || item.school || {},
-        record:
-          item.recordSummary ||
-          item.record?.summary ||
-          item.team?.record?.summary ||
-          ""
-      }))
-      .filter(item =>
-        Number.isInteger(item.rank) &&
-        item.rank >= 1 &&
-        item.rank <= 25
-      )
-      .sort((a, b) => a.rank - b.rank);
-
-    if (!ranks.length) {
-      container.innerHTML =
-        '<p class="muted">The AP Top 25 has not been published or is not available from the data provider yet.</p>';
-      return;
-    }
-
-    collegeBasketballRankMap = new Map();
-
-    ranks.forEach(item => {
-      const id = String(item.team?.id || "");
-      const name = normalizedTeamName(
-        item.team?.displayName ||
-        item.team?.name ||
-        item.team?.shortDisplayName ||
-        ""
-      );
-
-      if (id) {
-        collegeBasketballRankMap.set("id:" + id, item.rank);
-      }
-
-      if (name) {
-        collegeBasketballRankMap.set("name:" + name, item.rank);
-      }
-    });
-
-    container.innerHTML = ranks.map(item => {
-      const teamName =
-        item.team?.displayName ||
-        item.team?.name ||
-        item.team?.shortDisplayName ||
-        "Team name unavailable";
-
-      return `
-        <div class="ranking-row">
-          <span class="ranking-number">#${item.rank}</span>
-          <span class="ranking-team">${esc(teamName)}</span>
-          <span class="ranking-record">${esc(item.record)}</span>
-        </div>
-      `;
-    }).join("");
-
-    // Update the college basketball game cards with the new rankings.
-    ["homeCBB", "cbbGames"].forEach(targetId => {
-      const target = document.getElementById(targetId);
-
-      if (target && allGames.cbb) {
-        target.innerHTML = allGames.cbb.length
-          ? allGames.cbb.map(event => gameCard(event, "cbb")).join("")
-          : '<p class="muted">No games currently listed.</p>';
-      }
-    });
-
-    applySearch();
-  } catch (error) {
-    container.innerHTML =
-      '<p class="error">College basketball rankings could not load right now. Try refreshing later.</p>';
-  }
+async function getClips(key,id){
+ try{
+  const r=await fetch(`${API}/${SPORTS[key].path}/summary?event=${encodeURIComponent(id)}`);
+  if(!r.ok)return [];
+  const d=await r.json();return [...(d.videos||[]),...(d.highlights||[])];
+ }catch(e){return []}
+}
+function renderClips(clips,target){
+ const usable=(clips||[]).filter(c=>c?.links?.embed?.href);
+ if(!usable.length){target.innerHTML='<div class="video-message">No embeddable highlight video is available for this game. The provider may not allow videos to play inside this website.</div>';return}
+ target.innerHTML=usable.map(c=>`<div class="panel"><h3>${esc(c.headline||c.title||"Highlights")}</h3><div class="video-frame"><iframe src="${esc(c.links.embed.href)}" title="Game highlights" allowfullscreen></iframe></div></div>`).join("");
+}
+async function showEventHighlights(id,key){
+ const target=document.getElementById("details").classList.contains("hidden")?document.getElementById("highlightResults"):document.getElementById("gameHighlights");
+ target.innerHTML='<div class="video-message">Looking for available highlights...</div>';
+ renderClips(await getClips(key,id),target);
+}
+async function findHighlights(){
+ const key=document.getElementById("highlightSport").value;
+ const q=document.getElementById("highlightTeam").value.toLowerCase().trim();
+ const matches=(allGames[key]||[]).filter(e=>!q||JSON.stringify(e).toLowerCase().includes(q));
+ if(!matches.length){document.getElementById("highlightResults").innerHTML='<div class="video-message">No matching game was found in the loaded schedule. Try another team or refresh the page.</div>';return}
+ const event=matches.find(e=>e.status?.type?.completed)||matches[0];
+ await showEventHighlights(event.id,key);
 }
 
-function scoreOf(team) {
-  return team?.score ?? "";
+// Built-in sports assistant: no API key or backend needed.
+// It uses loaded data and prepared explanations, not a full generative AI model.
+const aiForm=document.getElementById("aiForm"),aiInput=document.getElementById("aiInput"),aiSend=document.getElementById("aiSend"),aiMessages=document.getElementById("aiMessages");
+function addAIMessage(text,role){
+ const el=document.createElement("div");el.className="ai-message "+(role==="user"?"user":"bot");el.textContent=text;aiMessages.appendChild(el);aiMessages.scrollTop=aiMessages.scrollHeight;return el;
 }
-
-function gameStatus(event) {
-  const type = event?.status?.type;
-
-  if (type?.completed || type?.name === "STATUS_FINAL") {
-    return "Final";
-  }
-
-  if (type?.state === "in") {
-    return type?.detail || "LIVE";
-  }
-
-  return type?.detail || "Scheduled";
+function askSuggestion(text){aiInput.value=text;aiForm.requestSubmit()}
+function gamesAnswer(key,query){
+ const list=allGames[key]||[],q=query.toLowerCase();
+ const found=list.filter(e=>{
+  const names=(e.competitions?.[0]?.competitors||[]).map(c=>`${c.team?.displayName||""} ${c.team?.shortDisplayName||""} ${c.team?.abbreviation||""}`).join(" ").toLowerCase();
+  return !q||names.includes(q)||(q==="byu"&&/byu|brigham young/i.test(names))||(q==="buffalo"&&/bills|buffalo/i.test(names));
+ });
+ if(!found.length)return "I couldn't find that game in the scores currently loaded on this website. Try refreshing the page or asking about another team.";
+ return found.slice(0,8).map(e=>{
+  const {away,home}=teams(e);
+  return `${away.team?.displayName||"Away"} ${away.score??"—"} vs ${home.team?.displayName||"Home"} ${home.score??"—"}\n${status(e)} · ${dateText(e.date)}`;
+ }).join("\n\n");
 }
-
-function formatDate(value) {
-  if (!value) return "Date unavailable";
-
-  const date = new Date(value);
-
-  if (isNaN(date.getTime())) return "Date unavailable";
-
-  return date.toLocaleString([], {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit"
-  });
+function builtInSportsAnswer(message){
+ const q=message.toLowerCase();
+ if(/\b(hi|hello|hey)\b/.test(q))return "Hey! Welcome to FANZONE. Ask me about BYU, the Buffalo Bills, scores loaded on this website, rankings, football rules, basketball rules, or sports history.";
+ if(/what can you do|help|what can i ask/.test(q))return "I can show scores and schedules loaded on this page, display college basketball rankings and standings, and explain common sports rules. Try: 'Show me BYU games', 'Show me Buffalo Bills games', 'What is a touchdown worth?', or 'Explain the College Football Playoff'.";
+ if(/touchdown|field goal|extra point|two.point conversion|football scoring/.test(q))return "In American football, a touchdown is worth 6 points. A kick after a touchdown is worth 1 point, while a successful two-point conversion is worth 2. A field goal is worth 3 points and a safety is worth 2.";
+ if(/basketball.*scor|three.pointer|3.pointer|free throw/.test(q))return "In basketball, a free throw is worth 1 point, a shot inside the three-point line is worth 2 points, and a shot from beyond the three-point line is worth 3 points.";
+ if(/quarterback|\bqb\b|football positions/.test(q))return "The quarterback leads the offense and throws passes or hands the ball off. Running backs run or catch passes, wide receivers catch passes, offensive linemen block, linebackers defend against runs and passes, cornerbacks cover receivers, and safeties help defend deep passes.";
+ if(/first down/.test(q))return "In American football, a team usually has four downs to gain 10 yards. If it gains those yards, it earns a new first down and another set of downs.";
+ if(/offside|offsides/.test(q))return "Offside rules differ by sport. In football, an offensive player is offside if they are across the line of scrimmage when the ball is snapped. In soccer, offside is about an attacking player being too far forward when a teammate plays the ball, with specific exceptions.";
+ if(/college football playoff|\bcfp\b|playoff format/.test(q))return "The College Football Playoff is the postseason tournament that determines the national champion in major college football. Teams are selected and seeded under the format for that season. For current bracket details, check the latest information from the official playoff organizers.";
+ if(/heisman/.test(q))return "The Heisman Trophy is an annual award for the most outstanding player in college football. I can explain the award, but I won't invent a current candidate list if it isn't loaded on this website.";
+ if(/super bowl/.test(q))return "The Super Bowl is the NFL championship game between the AFC and NFC champions. I can't know the future winner for certain, but I can discuss teams and matchups.";
+ if(/college basketball|ap top 25|basketball ranking|rankings/.test(q)){
+  const text=document.getElementById("collegeBasketballRankings").innerText.trim();
+  return text&&!/loading|could not load|not available/i.test(text)?"Here are the college basketball rankings currently loaded on this website:\n\n"+text:"The college basketball rankings have not loaded yet. Open the College Basketball tab or try again in a moment.";
+ }
+ if(/standings|division|conference record/.test(q)){
+  const text=document.getElementById("standingsContent").innerText.trim();
+  return text&&!/loading|could not load|not available/i.test(text)?"Here are the standings currently loaded on this website:\n\n"+text.slice(0,3000):"The standings have not loaded yet. Open the Standings tab, choose a league, and ask me again.";
+ }
+ if(/score|scores|game|games|schedule|playing|matchup|who.*win|live/.test(q)){
+  let key=/bills|buffalo|\bnfl\b|chiefs|ravens|eagles|cowboys|49ers/.test(q)?"nfl":
+   /college basketball|ncaa basketball|march madness|byu basketball/.test(q)?"cbb":
+   /\bnba\b|lakers|celtics|warriors/.test(q)?"nba":
+   /college football|\bcfb\b|byu|cougars|miami|football/.test(q)?"cfb":"";
+  if(!key)return "Which sport do you mean: NFL, College Football, College Basketball, or NBA?";
+  let team=/byu|cougars|brigham young/.test(q)?"BYU":/bills|buffalo/.test(q)?"Buffalo":"";
+  return `${SPORTS[key].label} games currently loaded:\n\n${gamesAnswer(key,team)}`;
+ }
+ if(/byu|cougars|brigham young/.test(q))return "BYU Cougars! I can show BYU games if they appear in the loaded College Football or College Basketball schedule. For current injuries, roster news, and rumors, this built-in assistant doesn't browse live news.";
+ if(/bills|buffalo/.test(q))return "Buffalo Bills! I can check games in the loaded NFL schedule. For current injuries, roster moves, and breaking news, this built-in assistant doesn't have live-news access.";
+ if(/nfl|football/.test(q))return "The NFL is the professional American football league. Ask me about scoring, positions, game schedules, or a particular team.";
+ if(/basketball/.test(q))return "Basketball is played by two teams trying to score by putting the ball through the opponent's hoop. Ask me about scoring, rules, teams, or the games loaded on this page.";
+ if(/baseball/.test(q))return "Baseball is played by two teams taking turns batting and fielding. The offense scores by getting runners around the bases and home.";
+ if(/soccer/.test(q))return "Soccer is played by two teams trying to score by putting the ball into the opponent's goal, generally using their feet and bodies but not their hands or arms, except for the goalkeeper in their own penalty area.";
+ return "I can answer common sports questions and use the scores, rankings, and standings loaded on this website. Try asking 'Show me BYU games', 'Show me Buffalo Bills games', 'What is a touchdown worth?', 'What is a first down?', or 'What are the college basketball rankings?' I don't have full ChatGPT-style AI or live-news access in this built-in version.";
 }
-
-function competitors(event) {
-  const list = event?.competitions?.[0]?.competitors || [];
-
-  return {
-    away: list.find(team => team.homeAway === "away") || list[0],
-    home: list.find(team => team.homeAway === "home") || list[1]
-  };
-}
-
-function gameCard(event, key) {
-  const {away, home} = competitors(event);
-
-  if (!away || !home) return "";
-
-  const awayRank = rankOf(away, key);
-  const homeRank = rankOf(home, key);
-
-  const names = [
-    away.team?.displayName,
-    home.team?.displayName
-  ].filter(Boolean);
-
-  const searchText = [
-    SPORTS[key].label,
-    ...names,
-    event.name
-  ].join(" ");
-
-  return `
-    <article class="card game"
-      data-search="${esc(searchText.toLowerCase())}"
-      onclick="openGame('${esc(event.id)}','${key}')">
-
-      <div class="muted">${esc(SPORTS[key].label)}</div>
-
-      <div class="teams">
-        <div class="team">
-          <span class="team-name">
-            ${awayRank ? `<span class="rank">${awayRank}</span>` : ""}
-            ${esc(away.team?.displayName || "Away Team")}
-          </span>
-          <span class="score">${esc(scoreOf(away))}</span>
-        </div>
-
-        <div class="team">
-          <span class="team-name">
-            ${homeRank ? `<span class="rank">${homeRank}</span>` : ""}
-            ${esc(home.team?.displayName || "Home Team")}
-          </span>
-          <span class="score">${esc(scoreOf(home))}</span>
-        </div>
-      </div>
-
-      <div class="status">${esc(gameStatus(event))}</div>
-      <p class="muted">${esc(formatDate(event.date))}</p>
-
-      <button onclick="event.stopPropagation();showEventHighlights('${esc(event.id)}','${key}')">
-        Highlights
-      </button>
-    </article>
-  `;
-}
-
-async function loadSport(key, targetId) {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-
-  target.innerHTML = '<p class="muted">Loading games...</p>';
-
-  try {
-    const response = await fetch(
-      `${API}/${SPORTS[key].path}/scoreboard?limit=100`
-    );
-
-    if (!response.ok) throw new Error("Scoreboard unavailable");
-
-    const data = await response.json();
-    allGames[key] = data.events || [];
-
-    target.innerHTML = allGames[key].length
-      ? allGames[key].map(event => gameCard(event, key)).join("")
-      : '<p class="muted">No games currently listed.</p>';
-
-    applySearch();
-  } catch (error) {
-    target.innerHTML =
-      '<p class="error">Games could not load right now. Try refreshing.</p>';
-  }
-}
-
-function filterTeam(team, key, targetId) {
-  showPage(key === "cfb" ? "college" : "nfl");
-
-  const matches = (allGames[key] || []).filter(event =>
-    JSON.stringify(event).toLowerCase().includes(team.toLowerCase())
-  );
-
-  document.getElementById(targetId).innerHTML = matches.length
-    ? matches.map(event => gameCard(event, key)).join("")
-    : `<p class="muted">No ${esc(team)} games found in the loaded schedule.</p>`;
-}
-
-function openGame(id, key) {
-  const event = (allGames[key] || []).find(item => item.id === id);
-  if (!event) return;
-
-  currentGame = {event, key};
-
-  previousPage =
-    document.querySelector(".page:not(.hidden)")?.id || "home";
-
-  document.querySelectorAll(".page").forEach(element =>
-    element.classList.add("hidden")
-  );
-
-  document.getElementById("details").classList.remove("hidden");
-
-  const {away, home} = competitors(event);
-  const awayRank = rankOf(away, key);
-  const homeRank = rankOf(home, key);
-
-  document.getElementById("gameDetails").innerHTML = `
-    <h1>
-      ${esc(awayRank ? awayRank + " " : "")}
-      ${esc(away.team?.displayName || "Away Team")}
-      vs
-      ${esc(homeRank ? homeRank + " " : "")}
-      ${esc(home.team?.displayName || "Home Team")}
-    </h1>
-
-    <div class="teams">
-      <div class="team">
-        <span>${esc(away.team?.displayName || "Away Team")}</span>
-        <span class="score">${esc(scoreOf(away))}</span>
-      </div>
-      <div class="team">
-        <span>${esc(home.team?.displayName || "Home Team")}</span>
-        <span class="score">${esc(scoreOf(home))}</span>
-      </div>
-    </div>
-
-    <p class="status">${esc(gameStatus(event))}</p>
-    <p>${esc(SPORTS[key].label)} · ${esc(formatDate(event.date))}</p>
-  `;
-
-  showEventHighlights(id, key);
-  window.scrollTo({top: 0, behavior: "smooth"});
-}
-
-function goBack() {
-  showPage(previousPage || "home");
-}
-
-function showNoHighlights(message) {
-  document.getElementById("highlightResults").innerHTML =
-    `<div class="video-message">${esc(message)}</div>`;
-}
-
-function renderClips(clips, containerId) {
-  const container = document.getElementById(containerId);
-
-  const valid = (clips || []).filter(clip =>
-    clip?.links?.source?.href ||
-    clip?.links?.web?.href ||
-    clip?.video?.href
-  );
-
-  if (!valid.length) {
-    container.innerHTML =
-      '<div class="video-message">Highlights unavailable. No authorized embeddable video was found for this game.</div>';
-    return;
-  }
-
-  // Only use an explicit embed URL supplied by the video provider.
-  const embeddable = valid.filter(clip => clip?.links?.embed?.href);
-
-  if (!embeddable.length) {
-    container.innerHTML =
-      '<div class="video-message">Highlights were found, but this provider has not supplied an authorized embedded player for them.</div>';
-    return;
-  }
-
-  container.innerHTML = embeddable.map(clip => `
-    <div class="panel">
-      <h3>${esc(clip.headline || clip.title || "Game Highlights")}</h3>
-      <div class="video-frame">
-        <iframe
-          src="${esc(clip.links.embed.href)}"
-          title="${esc(clip.headline || "Game highlights")}"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  `).join("");
-}
-
-async function fetchHighlights(key, eventId) {
-  const candidates = [
-    `${API}/${SPORTS[key].path}/summary?event=${encodeURIComponent(eventId)}`,
-    `${API}/${SPORTS[key].path}/scoreboard?event=${encodeURIComponent(eventId)}`
-  ];
-
-  for (const url of candidates) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) continue;
-
-      const data = await response.json();
-      const clips = [
-        ...(data.videos || []),
-        ...(data.highlights || [])
-      ];
-
-      if (clips.length) return clips;
-
-      const competitions =
-        data.events?.flatMap(event => event.competitions || []) || [];
-
-      const found = competitions.flatMap(competition =>
-        competition.videos || []
-      );
-
-      if (found.length) return found;
-    } catch (error) {
-      // Try the next available endpoint.
-    }
-  }
-
-  return [];
-}
-
-async function showEventHighlights(id, key) {
-  const containerId =
-    document.getElementById("details").classList.contains("hidden")
-      ? "highlightResults"
-      : "gameHighlights";
-
-  document.getElementById(containerId).innerHTML =
-    '<div class="video-message">Checking for an available embedded highlight...</div>';
-
-  const clips = await fetchHighlights(key, id);
-  renderClips(clips, containerId);
-}
-
-async function findHighlights() {
-  const sport = document.getElementById("highlightSport").value;
-  const team = document.getElementById("highlightTeam").value
-    .trim()
-    .toLowerCase();
-
-  const key = Object.keys(SPORTS).find(item =>
-    SPORTS[item].label.toLowerCase() === sport.toLowerCase()
-  );
-
-  if (!key) {
-    showNoHighlights(
-      "Highlights are unavailable for this sport through the current data provider."
-    );
-    return;
-  }
-
-  const candidates = (allGames[key] || []).filter(event =>
-    !team || JSON.stringify(event).toLowerCase().includes(team)
-  );
-
-  if (!candidates.length) {
-    showNoHighlights(
-      "No matching game is available in the loaded schedule. Refresh the schedule and try again."
-    );
-    return;
-  }
-
-  const finished = candidates.filter(event =>
-    event.status?.type?.completed ||
-    event.status?.type?.name === "STATUS_FINAL"
-  );
-
-  const event = finished[0] || candidates[0];
-  await showEventHighlights(event.id, key);
-}
-
-document.getElementById("search").addEventListener("input", applySearch);
-
-function applySearch() {
-  const query = document.getElementById("search").value
-    .trim()
-    .toLowerCase();
-
-  document.querySelectorAll(".game").forEach(card => {
-    const text =
-      (card.dataset.search || "") + " " + card.textContent.toLowerCase();
-
-    card.classList.toggle(
-      "hidden",
-      !!query && !text.includes(query)
-    );
-  });
-}
-
-async function refreshAll() {
-  await Promise.all([
-    loadSport("cfb", "homeCollege"),
-    loadSport("nfl", "homeNFL"),
-    loadSport("cbb", "homeCBB"),
-    loadSport("cfb", "collegeGames"),
-    loadSport("nfl", "nflGames"),
-    loadSport("cbb", "cbbGames"),
-    loadSport("nba", "nbaGames"),
-    loadCollegeBasketballRankings()
-  ]);
-}
+aiForm.addEventListener("submit",e=>{
+ e.preventDefault();const msg=aiInput.value.trim();if(!msg||aiSend.disabled)return;
+ addAIMessage(msg,"user");aiInput.value="";aiSend.disabled=true;aiSend.textContent="...";
+ const answer=addAIMessage("Checking the sports information available on this page...","bot");
+ setTimeout(()=>{answer.textContent=builtInSportsAnswer(msg);aiSend.disabled=false;aiSend.textContent="Send";aiInput.focus();aiMessages.scrollTop=aiMessages.scrollHeight},250);
+});
 
 refreshAll();
-setInterval(refreshAll, 5 * 60 * 1000);
+setInterval(refreshAll,5*60*1000);
 </script>
 </body>
 </html>
