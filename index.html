@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE FANZONE</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050505;color:#fff;font-family:Arial,sans-serif}
+header{background:#111;padding:22px 16px;border-bottom:4px solid #e31837}
+.logo{font-size:32px;font-weight:900}.logo span{color:#e31837}
+header p{color:#aaa;margin:6px 0 0}
+nav{display:flex;overflow-x:auto;gap:7px;padding:12px;background:#151515}
+button,select,input{font:inherit}
+nav button,.action{background:#292929;color:#fff;border:0;padding:12px;border-radius:6px;cursor:pointer;white-space:nowrap}
+nav button.active,.action{background:#e31837}
+main{max-width:1100px;margin:auto;padding:18px 14px 45px}
+h1{font-size:27px;border-left:5px solid #e31837;padding-left:12px}
+h2{font-size:20px}
+p{color:#bbb;line-height:1.5}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+input,select{background:#1b1b1b;color:#fff;border:1px solid #444;border-radius:6px;padding:12px}
+#search{flex:1;min-width:190px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.card,.game{background:#151515;border:1px solid #303030;border-radius:9px;padding:15px;margin:10px 0}
+.card h2{margin-top:0}
+.muted{color:#999;font-size:13px}
+.status{color:#ff536b;font-size:13px;font-weight:bold}
+.game{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.team{display:flex;justify-content:space-between;gap:12px;padding:7px 0}
+.score{font-size:23px;font-weight:bold}
+.game button{background:#303030;color:white;border:1px solid #555;padding:8px;border-radius:5px;cursor:pointer}
+.game-details{grid-column:1/-1;border-top:1px solid #333;padding-top:10px}
+table{border-collapse:collapse;width:100%;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:9px;border-bottom:1px solid #333}
+th{color:#ff6579}
+a{color:#ff6579}
+footer{text-align:center;padding:25px;background:#111;color:#999}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">THE <span>FANZONE</span></div>
+  <p>Scores. Schedules. Standings. All in one place.</p>
+</header>
+
+<nav id="nav">
+  <button class="active" data-view="home">HOME</button>
+  <button data-view="byu">BYU</button>
+  <button data-view="bills">BILLS</button>
+  <button data-view="nfl">NFL</button>
+  <button data-view="cfb">COLLEGE FOOTBALL</button>
+  <button data-view="nba">NBA</button>
+  <button data-view="cbb">COLLEGE BASKETBALL</button>
+  <button data-view="standings">STANDINGS</button>
+</nav>
+
+<main>
+  <div class="tools">
+    <input id="search" placeholder="Search teams on this page..." aria-label="Search teams">
+    <button class="action" id="refresh">Refresh scores</button>
+  </div>
+
+  <p id="message" class="muted">Choose a league to load its latest available data.</p>
+
+  <section id="home" class="view">
+    <h1>Sports Center</h1>
+    <div class="grid">
+      <div class="card"><h2>BYU Cougars</h2><p>Cougar football scores and schedule.</p><button class="action" data-go="byu">Open BYU</button></div>
+      <div class="card"><h2>Buffalo Bills</h2><p>Bills game scores and schedule.</p><button class="action" data-go="bills">Open Bills</button></div>
+      <div class="card"><h2>NFL</h2><p>Professional football scoreboard.</p><button class="action" data-go="nfl">NFL scores</button></div>
+      <div class="card"><h2>College Football</h2><p>College games and rankings.</p><button class="action" data-go="cfb">College scores</button></div>
+      <div class="card"><h2>NBA</h2><p>Professional basketball scores.</p><button class="action" data-go="nba">NBA scores</button></div>
+      <div class="card"><h2>College Basketball</h2><p>College basketball games.</p><button class="action" data-go="cbb">College scores</button></div>
+    </div>
+    <h2>Latest NFL Scores</h2>
+    <div id="homeScores"></div>
+    <h2>Latest College Football Scores</h2>
+    <div id="homeCFB"></div>
+  </section>
+
+  <section id="byu" class="view hidden">
+    <h1>BYU Cougars</h1>
+    <p>BYU games and results from the college football scoreboard.</p>
+    <div id="byuScores"></div>
+    <h2>BYU Season Schedule</h2>
+    <div id="byuSchedule"></div>
+  </section>
+
+  <section id="bills" class="view hidden">
+    <h1>Buffalo Bills</h1>
+    <p>Bills scores and schedule from the NFL data feed.</p>
+    <div id="billsScores"></div>
+    <h2>Bills Season Schedule</h2>
+    <div id="billsSchedule"></div>
+  </section>
+
+  <section id="nfl" class="view hidden">
+    <h1>NFL Scores and Games</h1>
+    <div id="nflScores"></div>
+  </section>
+
+  <section id="cfb" class="view hidden">
+    <h1>College Football Scores</h1>
+    <div id="cfbScores"></div>
+    <h2>College Football Rankings</h2>
+    <div id="rankings"></div>
+  </section>
+
+  <section id="nba" class="view hidden">
+    <h1>NBA Scores and Games</h1>
+    <div id="nbaScores"></div>
+  </section>
+
+  <section id="cbb" class="view hidden">
+    <h1>College Basketball Scores</h1>
+    <div id="cbbScores"></div>
+  </section>
+
+  <section id="standings" class="view hidden">
+    <h1>League Standings</h1>
+    <div class="tools">
+      <select id="standingsLeague">
+        <option value="nfl">NFL</option>
+        <option value="nba">NBA</option>
+        <option value="cfb">College Football</option>
+      </select>
+      <button class="action" id="loadStandings">Show standings</button>
+    </div>
+    <div id="standingsData"></div>
+  </section>
+</main>
+
+<footer>
+  THE FANZONE · Sports data loads from ESPN's public data endpoints.
+  <p class="muted">Data availability may vary. Detailed player statistics may not be available for every game.</p>
+</footer>
+
+<script>
+const API = "https://site.api.espn.com/apis/site/v2/sports/";
+const views = [...document.querySelectorAll(".view")];
+let currentView = "home";
+let lastData = {};
+
+const configs = {
+  nfl: {path:"football/nfl",label:"NFL"},
+  cfb: {path:"football/college-football",label:"College Football"},
+  nba: {path:"basketball/nba",label:"NBA"},
+  cbb: {path:"basketball/mens-college-basketball",label:"College Basketball"}
+};
+
+async function getJSON(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Sports data is temporarily unavailable.");
+  return response.json();
+}
+
+function showMessage(text) {
+  document.getElementById("message").textContent = text;
+}
+
+function showView(id) {
+  currentView = id;
+  views.forEach(v => v.classList.toggle("hidden",v.id !== id));
+  document.querySelectorAll("#nav button").forEach(b =>
+    b.classList.toggle("active",b.dataset.view === id)
+  );
+  document.getElementById("search").value = "";
+  filterCards("");
+  loadView(id);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.querySelectorAll("#nav button").forEach(b =>
+  b.addEventListener("click",() => showView(b.dataset.view))
+);
+document.querySelectorAll("[data-go]").forEach(b =>
+  b.addEventListener("click",() => showView(b.dataset.go))
+);
+
+function safeText(el,text) {
+  el.textContent = text == null ? "" : String(text);
+}
+
+function renderGames(targetId,events,filterFn=()=>true) {
+  const target = document.getElementById(targetId);
+  target.replaceChildren();
+
+  const matches = (events || []).filter(filterFn);
+
+  if (!matches.length) {
+    target.textContent = "No games found in this data feed right now. Try refreshing.";
+    return;
+  }
+
+  matches.forEach(event => {
+    const comp = event.competitions?.[0];
+    const competitors = comp?.competitors || [];
+    const away = competitors.find(t => t.homeAway === "away") || competitors[0];
+    const home = competitors.find(t => t.homeAway === "home") || competitors[1];
+    const status = event.status?.type?.shortDetail ||
+                   event.status?.type?.description || "Scheduled";
+
+    const card = document.createElement("div");
+    card.className = "game searchable";
+
+    const left = document.createElement("div");
+    const date = document.createElement("div");
+    date.className = "muted";
+    date.textContent = new Date(event.date).toLocaleString();
+    left.appendChild(date);
+
+    [away,home].filter(Boolean).forEach(team => {
+      const row = document.createElement("div");
+      row.className = "team";
+      const name = document.createElement("span");
+      name.textContent = team.team?.displayName || team.team?.name || "Team";
+      const score = document.createElement("span");
+      score.className = "score";
+      score.textContent = team.score ?? "–";
+      row.append(name,score);
+      left.appendChild(row);
+    });
+
+    const right = document.createElement("div");
+    const label = document.createElement("div");
+    label.className = "status";
+    label.textContent = status;
+    const details = document.createElement("button");
+    details.textContent = "Game stats";
+    details.addEventListener("click",() => loadGameDetails(event.id,card));
+    right.append(label,details);
+
+    card.append(left,right);
+    target.appendChild(card);
+  });
+}
+
+async function loadGameDetails(eventId,card) {
+  let panel = card.querySelector(".game-details");
+  if (panel) {
+    panel.remove();
+    return;
+  }
+  panel = document.createElement("div");
+  panel.className = "game-details";
+  panel.textContent = "Loading available game statistics...";
+  card.appendChild(panel);
+
+  try {
+    const data = await getJSON(
+      "https://site.api.espn.com/apis/site/v2/sports/" +
+      currentLeaguePath() + "/summary?event=" + encodeURIComponent(eventId)
+    );
+    panel.replaceChildren();
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Game Information";
+    panel.appendChild(heading);
+
+    const box = data.boxscore;
+    if (box && box.teams) {
+      box.teams.forEach(team => {
+        const name = document.createElement("h3");
+        name.textContent = team.team?.displayName || team.team?.name || "Team";
+        panel.appendChild(name);
+
+        if (team.statistics?.length) {
+          const table = document.createElement("table");
+          table.innerHTML = "<thead><tr><th>Statistic</th><th>Value</th></tr></thead>";
+          const tbody = document.createElement("tbody");
+          team.statistics.forEach(stat => {
+            const tr = document.createElement("tr");
+            const a = document.createElement("td");
+            const b = document.createElement("td");
+            a.textContent = stat.label || stat.name || "Stat";
+            b.textContent = stat.displayValue ?? stat.value ?? "—";
+            tr.append(a,b);
+            tbody.appendChild(tr);
+          });
+          table.appendChild(tbody);
+          panel.appendChild(table);
+        }
+      });
+    } else {
+      panel.textContent = "Detailed box-score statistics aren't available for this game right now.";
+    }
+  } catch(e) {
+    panel.textContent = "Could not load game stats right now. Try again later.";
+  }
+}
+
+function currentLeaguePath() {
+  return configs[currentView]?.path ||
+    (currentView === "byu" ? configs.cfb.path :
+     currentView === "bills" ? configs.nfl.path : configs.nfl.path);
+}
+
+async function loadScoreboard(league,targetId,filterFn=()=>true) {
+  const target = document.getElementById(targetId);
+  target.textContent = "Loading scores...";
+  try {
+    const data = await getJSON(API + configs[league].path + "/scoreboard");
+    lastData[league] = data.events || [];
+    renderGames(targetId,lastData[league],filterFn);
+    showMessage("Data loaded. Scores refresh automatically about once per minute.");
+  } catch(e) {
+    target.textContent = "Couldn't load the scoreboard. Check your internet connection and press Refresh.";
+    showMessage("Sports data couldn't be loaded.");
+  }
+}
+
+function containsTeam(event,term) {
+  const teams = event.competitions?.[0]?.competitors || [];
+  return teams.some(t => {
+    const name = (t.team?.displayName || t.team?.name || "").toLowerCase();
+    const abbr = (t.team?.abbreviation || "").toLowerCase();
+    return name.includes(term) || abbr === term;
+  });
+}
+
+async function loadSchedule(league,team,targetId) {
+  const target = document.getElementById(targetId);
+  target.textContent = "Loading schedule...";
+  try {
+    const slug = league === "nfl" ? "buf" : "252";
+    const url = API + configs[league].path + "/teams/" + slug + "/schedule";
+    const data = await getJSON(url);
+    const events = data.events || data.items || [];
+    if (events.length) {
+      renderGames(targetId,events);
+    } else {
+      target.textContent = "The season schedule isn't available through this endpoint. The current scoreboard is shown above.";
+    }
+  } catch(e) {
+    target.textContent = "Season schedule unavailable here. Check the scores above or try refreshing.";
+  }
+}
+
+async function loadRankings() {
+  const target = document.getElementById("rankings");
+  target.textContent = "Loading rankings...";
+  try {
+    const data = await getJSON(API + configs.cfb.path + "/rankings");
+    target.replaceChildren();
+    const groups = data.rankings || [];
+    if (!groups.length) {
+      target.textContent = "Rankings aren't available right now.";
+      return;
+    }
+    groups.forEach(group => {
+      const h = document.createElement("h2");
+      h.textContent = group.name || "Rankings";
+      target.appendChild(h);
+      const table = document.createElement("table");
+      table.innerHTML = "<thead><tr><th>Rank</th><th>Team</th><th>Record</th></tr></thead>";
+      const tbody = document.createElement("tbody");
+      (group.ranks || []).slice(0,25).forEach(item => {
+        const tr = document.createElement("tr");
+        [item.current || item.rank, item.team?.displayName || item.team?.name, item.recordSummary || "—"].forEach(value => {
+          const td = document.createElement("td");
+          td.textContent = value ?? "—";
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      target.appendChild(table);
+    });
+  } catch(e) {
+    target.textContent = "Rankings could not be loaded right now.";
+  }
+}
+
+async function loadStandings() {
+  const league = document.getElementById("standingsLeague").value;
+  const target = document.getElementById("standingsData");
+  target.textContent = "Loading standings...";
+  const path = configs[league].path.replace("/","/");
+  try {
+    const url = "https://site.api.espn.com/apis/v2/sports/" + path + "/standings";
+    const data = await getJSON(url);
+    target.replaceChildren();
+    const groups = [];
+    function collect(node) {
+      if (!node) return;
+      if (node.standings?.entries) groups.push(node);
+      (node.children || []).forEach(collect);
+    }
+    collect(data);
+    if (!groups.length) {
+      target.textContent = "Standings aren't available from this feed right now.";
+      return;
+    }
+    groups.forEach(group => {
+      const h = document.createElement("h2");
+      h.textContent = group.name || "Standings";
+      target.appendChild(h);
+      const table = document.createElement("table");
+      table.innerHTML = "<thead><tr><th>Team</th><th>Record</th><th>Win %</th></tr></thead>";
+      const tbody = document.createElement("tbody");
+      group.standings.entries.forEach(entry => {
+        const stats = entry.stats || [];
+        const value = name => stats.find(s => s.name === name)?.displayValue ?? "—";
+        const tr = document.createElement("tr");
+        [entry.team?.displayName || entry.team?.name, value("overall"), value("winPercent")].forEach(x => {
+          const td = document.createElement("td");
+          td.textContent = x;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      target.appendChild(table);
+    });
+  } catch(e) {
+    target.textContent = "Standings couldn't be loaded. Try refreshing.";
+  }
+}
+
+async function loadView(id) {
+  if (id === "home") {
+    await Promise.all([
+      loadScoreboard("nfl","homeScores"),
+      loadScoreboard("cfb","homeCFB")
+    ]);
+  } else if (id === "nfl") {
+    await loadScoreboard("nfl","nflScores");
+  } else if (id === "cfb") {
+    await loadScoreboard("cfb","cfbScores");
+    await loadRankings();
+  } else if (id === "nba") {
+    await loadScoreboard("nba","nbaScores");
+  } else if (id === "cbb") {
+    await loadScoreboard("cbb","cbbScores");
+  } else if (id === "byu") {
+    await loadScoreboard("cfb","byuScores",event => containsTeam(event,"byu"));
+    await loadSchedule("cfb","byu","byuSchedule");
+  } else if (id === "bills") {
+    await loadScoreboard("nfl","billsScores",event =>
+      containsTeam(event,"buf") || containsTeam(event,"buffalo"));
+    await loadSchedule("nfl","bills","billsSchedule");
+  } else if (id === "standings") {
+    await loadStandings();
+  }
+}
+
+function filterCards(term) {
+  const active = document.querySelector(".view:not(.hidden)");
+  if (!active) return;
+  active.querySelectorAll(".searchable,.card,.game").forEach(card => {
+    card.style.display = !term || card.innerText.toLowerCase().includes(term)
+      ? "" : "none";
+  });
+}
+
+document.getElementById("search").addEventListener("input",e => {
+  filterCards(e.target.value.trim().toLowerCase());
+});
+
+document.getElementById("refresh").addEventListener("click",() => loadView(currentView));
+document.getElementById("loadStandings").addEventListener("click",loadStandings);
+
+loadView("home");
+setInterval(() => {
+  if (currentView === "home" || currentView === "nfl" ||
+      currentView === "cfb" || currentView === "nba" ||
+      currentView === "cbb") {
+    loadView(currentView);
+  }
+},60000);
+</script>
+</body>
+</html>
